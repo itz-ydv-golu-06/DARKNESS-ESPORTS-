@@ -12,8 +12,41 @@ service cloud.firestore {
       allow delete: if false; // deletions go through admin tooling in a later phase
     }
 
+    // teams/{teamId} — anyone can read; only an authenticated user creating
+    // themselves as captain can create; only the captain can update.
+    match /teams/{teamId} {
+      allow read: if true;
+      allow create: if request.auth != null && request.auth.uid == request.resource.data.captainUid;
+      allow update: if request.auth != null && request.auth.uid == resource.data.captainUid;
+      allow delete: if false;
+
+      // teams/{teamId}/members/{uid} — anyone can read the roster.
+      // A player can add themself (accepting an invite) or remove themself
+      // (leaving); the team captain can add/update/remove anyone.
+      match /members/{memberId} {
+        allow read: if true;
+        allow create: if request.auth != null &&
+          (request.auth.uid == memberId || request.auth.uid == get(/databases/$(database)/documents/teams/$(teamId)).data.captainUid);
+        allow update: if request.auth != null &&
+          request.auth.uid == get(/databases/$(database)/documents/teams/$(teamId)).data.captainUid;
+        allow delete: if request.auth != null &&
+          (request.auth.uid == memberId || request.auth.uid == get(/databases/$(database)/documents/teams/$(teamId)).data.captainUid);
+      }
+    }
+
+    // invites/{inviteId} — the sender (team captain) creates it; only the
+    // sender or the invited player can read or update it (accept/decline).
+    match /invites/{inviteId} {
+      allow read: if request.auth != null &&
+        (request.auth.uid == resource.data.toUid || request.auth.uid == resource.data.fromUid);
+      allow create: if request.auth != null && request.auth.uid == request.resource.data.fromUid;
+      allow update: if request.auth != null &&
+        (request.auth.uid == resource.data.toUid || request.auth.uid == resource.data.fromUid);
+      allow delete: if false;
+    }
+
     // Everything else is closed until its collection's rules are added
-    // in later phases (teams, tournaments, registrations, etc).
+    // in later phases (tournaments, registrations, etc).
     match /{document=**} {
       allow read, write: if false;
     }

@@ -15,6 +15,7 @@
   <div class="container navbar-inner">
     <a href="index.html" class="brand"><span class="brand-mark"></span>DARKNESS<span>&nbsp;ESPORTS</span></a>
     <ul class="nav-links">
+      <li><a href="teams.html">Teams</a></li>
       <li><a href="index.html#lineup">Lineup</a></li>
       <li><a href="index.html#tournaments">Tournaments</a></li>
       <li><a href="index.html#recruitment">Recruitment</a></li>
@@ -37,7 +38,7 @@
     <div class="hero-actions">
       <a href="register.html" class="btn btn-primary">Join The Darkness</a>
       <a href="index.html#tournaments" class="btn btn-ghost">View Tournaments</a>
-      <a href="index.html#lineup" class="btn btn-ghost">Current Lineup</a>
+      <a href="team-lineup.html" class="btn btn-ghost" id="lineupCta">Current Lineup</a>
     </div>
     <div class="hero-stats">
       <div class="hero-stat"><div class="num">—</div><div class="label">Matches Played</div></div>
@@ -53,13 +54,29 @@
       <div>
         <div class="section-eyebrow">Main Squad</div>
         <h2>Current Lineup</h2>
+        <p>The official roster and every registered team's lineup, live from Firestore.</p>
       </div>
-      <a href="#" class="btn btn-ghost btn-sm">Full Roster &rarr;</a>
+      <a href="team-lineup.html" class="btn btn-ghost btn-sm">Official Roster &rarr;</a>
     </div>
-    <div class="empty-state hud-card">
-      <div class="hud-corner"></div>
-      <h3>Roster data coming online</h3>
-      <p>Player profiles and the live lineup connect to Firestore in the next build phase.</p>
+    <div class="grid grid-3">
+      <div class="hud-card">
+        <div class="hud-corner"></div>
+        <h4 style="font-size:1.05rem;margin-bottom:8px;">Official Roster</h4>
+        <p style="color:var(--muted);font-size:0.9rem;margin-bottom:16px;">See the DARKNESS ESPORTS main squad and subs.</p>
+        <a href="team-lineup.html" class="btn btn-ghost btn-sm">View Lineup</a>
+      </div>
+      <div class="hud-card">
+        <div class="hud-corner"></div>
+        <h4 style="font-size:1.05rem;margin-bottom:8px;">Browse Teams</h4>
+        <p style="color:var(--muted);font-size:0.9rem;margin-bottom:16px;">Every team registered on the platform.</p>
+        <a href="teams.html" class="btn btn-ghost btn-sm">View Teams</a>
+      </div>
+      <div class="hud-card">
+        <div class="hud-corner"></div>
+        <h4 style="font-size:1.05rem;margin-bottom:8px;">Start a Team</h4>
+        <p style="color:var(--muted);font-size:0.9rem;margin-bottom:16px;">Create your own squad and invite players.</p>
+        <a href="create-team.html" class="btn btn-ghost btn-sm">Create Team</a>
+      </div>
     </div>
   </div>
 </section>
