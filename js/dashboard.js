@@ -109,6 +109,94 @@ function initEditProfileForm(uid) {
   });
 }
 
+async function loadMyTeam(uid, teamId) {
+  const root = document.getElementById('myTeamRoot');
+  if (!root) return;
+
+  if (!teamId) {
+    root.innerHTML = `
+      <div class="hud-card"><div class="hud-corner"></div>
+        <p style="color:var(--muted);font-size:0.9rem;margin-bottom:14px;">You're not on a team yet.</p>
+        <a href="create-team.html" class="btn btn-primary btn-sm">Create a Team</a>
+        <a href="teams.html" class="btn btn-ghost btn-sm">Browse Teams</a>
+      </div>`;
+    return;
+  }
+
+  const teamDoc = await db.collection('teams').doc(teamId).get();
+  if (!teamDoc.exists) {
+    root.innerHTML = `<p style="color:var(--muted);">Team not found.</p>`;
+    return;
+  }
+  const team = teamDoc.data();
+  root.innerHTML = `
+    <div class="hud-card">
+      <div class="hud-corner"></div>
+      <div class="team-card-header">
+        <div class="team-logo">${team.tag ? team.tag.charAt(0) : '?'}</div>
+        <div><div style="font-weight:600;">${team.name}</div><div class="team-tag">[${team.tag}]</div></div>
+      </div>
+      <a href="team.html?id=${teamId}" class="btn btn-ghost btn-sm">Manage / View Team</a>
+    </div>`;
+}
+
+async function loadMyInvites(uid) {
+  const root = document.getElementById('invitesRoot');
+  if (!root) return;
+
+  const snap = await db.collection('invites').where('toUid', '==', uid).where('status', '==', 'pending').get();
+  if (snap.empty) { root.innerHTML = ''; return; }
+
+  let html = `<div class="form-section-label">Team Invitations</div>`;
+  snap.forEach((doc) => {
+    const inv = doc.data();
+    html += `
+      <div class="invite-row" data-invite-id="${doc.id}">
+        <div><strong>${inv.teamName}</strong> <span class="team-tag">[${inv.teamTag}]</span> invited you as <strong>${inv.role}</strong></div>
+        <div class="member-actions">
+          <button class="btn btn-primary btn-sm acceptInviteBtn" data-id="${doc.id}">Accept</button>
+          <button class="btn btn-ghost btn-sm declineInviteBtn" data-id="${doc.id}">Decline</button>
+        </div>
+      </div>`;
+  });
+  root.innerHTML = html;
+
+  root.querySelectorAll('.acceptInviteBtn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const inviteDoc = await db.collection('invites').doc(btn.dataset.id).get();
+      const inv = inviteDoc.data();
+      const userDoc = await db.collection('users').doc(uid).get();
+      const userData = userDoc.data();
+
+      if (userData.teamId) {
+        showToast('You are already on a team.');
+        return;
+      }
+
+      await db.collection('teams').doc(inv.teamId).collection('members').doc(uid).set({
+        uid, username: userData.username, displayName: userData.displayName,
+        role: inv.role, lineupSlot: 'sub', order: 99, isCaptain: false,
+        joinedAt: firebase.firestore.FieldValue.serverTimestamp(),
+      });
+      await db.collection('teams').doc(inv.teamId).update({ memberCount: firebase.firestore.FieldValue.increment(1) });
+      await db.collection('users').doc(uid).update({ teamId: inv.teamId, team: inv.teamName });
+      await db.collection('invites').doc(btn.dataset.id).update({ status: 'accepted' });
+
+      showToast(`Joined ${inv.teamName}.`);
+      loadMyTeam(uid, inv.teamId);
+      loadMyInvites(uid);
+    });
+  });
+
+  root.querySelectorAll('.declineInviteBtn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      await db.collection('invites').doc(btn.dataset.id).update({ status: 'declined' });
+      showToast('Invite declined.');
+      loadMyInvites(uid);
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   if (typeof auth === 'undefined') return;
   auth.onAuthStateChanged(async (user) => {
@@ -121,5 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
     buildStatusChanger(status, user.uid);
     populateEditForm(data);
     initEditProfileForm(user.uid);
+    loadMyTeam(user.uid, data.teamId || null);
+    loadMyInvites(user.uid);
   });
 });
