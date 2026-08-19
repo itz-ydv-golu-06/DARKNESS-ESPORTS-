@@ -20,23 +20,28 @@
 </nav>
 
 <div class="auth-wrap">
-  <div class="auth-card">
+  <div class="auth-card wide">
     <h1>Create Account</h1>
-    <p class="sub">Step one of joining DARKNESS ESPORTS. Full player profile comes next.</p>
+    <p class="sub">Register your player profile for DARKNESS ESPORTS.</p>
 
     <div class="form-alert" id="registerAlert"></div>
 
     <form id="registerForm" novalidate>
-      <div class="field" id="field-username">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" placeholder="shadowx" autocomplete="username" required>
-        <div class="field-error"></div>
-      </div>
 
-      <div class="field" id="field-displayName">
-        <label for="displayName">Display Name</label>
-        <input type="text" id="displayName" name="displayName" placeholder="ShadowX" required>
-        <div class="field-error"></div>
+      <div class="form-section-label">Account</div>
+
+      <div class="field-row">
+        <div class="field" id="field-username">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="shadowx" autocomplete="username" required>
+          <div class="field-hint">3-20 characters, letters/numbers/underscore, must be unique.</div>
+          <div class="field-error"></div>
+        </div>
+        <div class="field" id="field-displayName">
+          <label for="displayName">Display Name</label>
+          <input type="text" id="displayName" name="displayName" placeholder="ShadowX" required>
+          <div class="field-error"></div>
+        </div>
       </div>
 
       <div class="field" id="field-email">
@@ -58,7 +63,83 @@
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+      <div class="form-section-label">Player Details</div>
+
+      <div class="avatar-picker">
+        <div class="avatar-preview" id="avatarPreview">?</div>
+        <div class="field" style="flex:1;margin-bottom:0;" id="field-photoUrl">
+          <label for="photoUrl">Profile Photo URL <span style="text-transform:none;">(optional)</span></label>
+          <input type="url" id="photoUrl" name="photoUrl" placeholder="https://...">
+          <div class="field-error"></div>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field" id="field-ign">
+          <label for="ign">In-Game Name (IGN)</label>
+          <input type="text" id="ign" name="ign" placeholder="ShadowX" required>
+          <div class="field-error"></div>
+        </div>
+        <div class="field" id="field-uid">
+          <label for="uid">Free Fire UID</label>
+          <input type="text" id="uid" name="uid" placeholder="123456789" inputmode="numeric" required>
+          <div class="field-hint">6-12 digit numeric UID.</div>
+          <div class="field-error"></div>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field" id="field-age">
+          <label for="age">Age</label>
+          <input type="number" id="age" name="age" min="10" max="99" placeholder="18" required>
+          <div class="field-error"></div>
+        </div>
+        <div class="field" id="field-region">
+          <label for="region">Region</label>
+          <select id="region" name="region" required>
+            <option value="" disabled selected>Select region</option>
+            <option>South Asia</option>
+            <option>Southeast Asia</option>
+            <option>MEA</option>
+            <option>CIS</option>
+            <option>Europe</option>
+            <option>Latin America</option>
+            <option>North America</option>
+            <option>Other</option>
+          </select>
+          <div class="field-error"></div>
+        </div>
+      </div>
+
+      <div class="field" id="field-role">
+        <label for="role">Preferred Role</label>
+        <select id="role" name="role" required>
+          <option value="" disabled selected>Select role</option>
+          <option>Sniper</option>
+          <option>Primary Rusher</option>
+          <option>Assaulter</option>
+          <option>Bomber</option>
+          <option>Support</option>
+          <option>IGL</option>
+          <option>Substitute</option>
+        </select>
+        <div class="field-error"></div>
+      </div>
+
+      <div class="field" id="field-contact">
+        <label for="contact">Discord / Instagram / Contact Username</label>
+        <input type="text" id="contact" name="contact" placeholder="shadowx#0001" required>
+        <div class="field-error"></div>
+      </div>
+
+      <div class="field" id="field-bio">
+        <label for="bio">Short Bio</label>
+        <textarea id="bio" name="bio" rows="3" maxlength="280" placeholder="A little about your playstyle and experience..."></textarea>
+        <div class="char-count"><span id="bioCount">0</span>/280</div>
+        <div class="field-error"></div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block" style="margin-top:8px;">Create Account</button>
     </form>
 
     <div class="auth-foot">Already have an account? <a href="login.html">Login</a></div>

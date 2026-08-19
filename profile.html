@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Player Profile — DARKNESS ESPORTS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="brand"><span class="brand-mark"></span>DARKNESS<span>&nbsp;ESPORTS</span></a>
+    <ul class="nav-links"></ul>
+    <div class="nav-actions"></div>
+    <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="container" id="profileRoot">
+  <div class="empty-state" style="padding-top:80px;">
+    <h3>Loading profile...</h3>
+  </div>
+</div>
+
+<template id="profileTemplate">
+  <div class="profile-header">
+    <div class="profile-avatar" id="tplAvatar">?</div>
+    <div class="profile-meta">
+      <h1 id="tplDisplayName"></h1>
+      <div class="handle mono" id="tplHandle"></div>
+      <span class="status-pill" id="tplStatus"><span class="status-dot"></span><span id="tplStatusText"></span></span>
+    </div>
+  </div>
+
+  <div class="profile-stat-grid">
+    <div class="hud-card"><div class="hud-corner"></div><div class="num" id="tplMatches">0</div><div class="label">Matches</div></div>
+    <div class="hud-card"><div class="hud-corner"></div><div class="num" id="tplWins">0</div><div class="label">Wins</div></div>
+    <div class="hud-card"><div class="hud-corner"></div><div class="num" id="tplKd">0</div><div class="label">K/D</div></div>
+    <div class="hud-card"><div class="hud-corner"></div><div class="num" id="tplRole">—</div><div class="label">Role</div></div>
+  </div>
+
+  <p class="profile-bio" id="tplBio"></p>
+
+  <dl class="profile-detail-list">
+    <div><dt>IGN</dt><dd id="tplIgn" class="mono"></dd></div>
+    <div><dt>Free Fire UID</dt><dd class="mono"><span id="tplUid"></span><button class="copy-uid-btn" id="copyUidBtn">Copy</button></dd></div>
+    <div><dt>Region</dt><dd id="tplRegion"></dd></div>
+    <div><dt>Team</dt><dd id="tplTeam">Unassigned</dd></div>
+    <div><dt>Contact</dt><dd id="tplContact"></dd></div>
+    <div><dt>Joined</dt><dd id="tplJoined"></dd></div>
+  </dl>
+</template>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>

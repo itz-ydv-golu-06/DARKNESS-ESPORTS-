@@ -24,15 +24,16 @@
     <div class="container">
       <div class="section-eyebrow">Player Dashboard</div>
       <h2 style="margin-bottom:6px;">Welcome, <span id="welcomeName">—</span></h2>
-      <p class="mono" style="color:var(--muted);margin-bottom:6px;" id="welcomeUsername">@—</p>
-      <span class="status-pill" id="welcomeStatus">—</span>
+      <p class="mono" style="color:var(--muted);margin-bottom:10px;">
+        <span id="welcomeUsername">@—</span> &middot;
+        <a href="#" id="viewPublicProfileLink" style="color:var(--purple-bright);">View public profile &rarr;</a>
+      </p>
+      <span class="status-pill" id="welcomeStatus"><span class="status-dot"></span><span id="welcomeStatusText">—</span></span>
 
-      <div class="grid grid-3" style="margin-top:44px;">
-        <div class="hud-card">
-          <div class="hud-corner"></div>
-          <h4 style="font-size:1rem;margin-bottom:10px;">Profile</h4>
-          <p style="color:var(--muted);font-size:0.9rem;">Full profile fields (IGN, UID, role, region, bio) arrive in Phase 2.</p>
-        </div>
+      <div class="form-section-label" style="margin-top:40px;">Change Status</div>
+      <div class="grid grid-4" id="statusChanger" style="margin-bottom:44px;"></div>
+
+      <div class="grid grid-3" style="margin-bottom:44px;">
         <div class="hud-card">
           <div class="hud-corner"></div>
           <h4 style="font-size:1rem;margin-bottom:10px;">Team</h4>
@@ -43,6 +44,78 @@
           <h4 style="font-size:1rem;margin-bottom:10px;">Tournaments</h4>
           <p style="color:var(--muted);font-size:0.9rem;">Tournament registration arrives in Phase 4.</p>
         </div>
+        <div class="hud-card">
+          <div class="hud-corner"></div>
+          <h4 style="font-size:1rem;margin-bottom:10px;">Notifications</h4>
+          <p style="color:var(--muted);font-size:0.9rem;">Notifications arrive in Phase 6.</p>
+        </div>
+      </div>
+
+      <div class="form-section-label">Edit Profile</div>
+      <div class="hud-card" style="max-width:640px;">
+        <div class="hud-corner"></div>
+        <div class="form-alert" id="editAlert"></div>
+        <form id="editProfileForm" novalidate>
+          <div class="avatar-picker">
+            <div class="avatar-preview" id="editAvatarPreview">?</div>
+            <div class="field" style="flex:1;margin-bottom:0;" id="field-editPhotoUrl">
+              <label for="editPhotoUrl">Profile Photo URL</label>
+              <input type="url" id="editPhotoUrl" name="editPhotoUrl" placeholder="https://...">
+              <div class="field-error"></div>
+            </div>
+          </div>
+
+          <div class="field" id="field-editIgn">
+            <label for="editIgn">In-Game Name (IGN)</label>
+            <input type="text" id="editIgn" name="editIgn" required>
+            <div class="field-error"></div>
+          </div>
+
+          <div class="field-row">
+            <div class="field" id="field-editRegion">
+              <label for="editRegion">Region</label>
+              <select id="editRegion" name="editRegion" required>
+                <option>South Asia</option>
+                <option>Southeast Asia</option>
+                <option>MEA</option>
+                <option>CIS</option>
+                <option>Europe</option>
+                <option>Latin America</option>
+                <option>North America</option>
+                <option>Other</option>
+              </select>
+              <div class="field-error"></div>
+            </div>
+            <div class="field" id="field-editRole">
+              <label for="editRole">Preferred Role</label>
+              <select id="editRole" name="editRole" required>
+                <option>Sniper</option>
+                <option>Primary Rusher</option>
+                <option>Assaulter</option>
+                <option>Bomber</option>
+                <option>Support</option>
+                <option>IGL</option>
+                <option>Substitute</option>
+              </select>
+              <div class="field-error"></div>
+            </div>
+          </div>
+
+          <div class="field" id="field-editContact">
+            <label for="editContact">Discord / Instagram / Contact Username</label>
+            <input type="text" id="editContact" name="editContact" required>
+            <div class="field-error"></div>
+          </div>
+
+          <div class="field" id="field-editBio">
+            <label for="editBio">Short Bio</label>
+            <textarea id="editBio" name="editBio" rows="3" maxlength="280"></textarea>
+            <div class="char-count"><span id="editBioCount">0</span>/280</div>
+            <div class="field-error"></div>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
       </div>
 
       <button class="btn btn-ghost" id="logoutBtn" style="margin-top:44px;">Logout</button>
@@ -55,6 +128,8 @@
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script src="js/firebase-config.js"></script>
 <script src="js/main.js"></script>
+<script src="js/profile.js"></script>
 <script src="js/auth.js"></script>
+<script src="js/dashboard.js"></script>
 </body>
 </html>

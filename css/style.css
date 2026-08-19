@@ -371,6 +371,61 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   color: var(--purple-bright);
 }
 
+/* ---------- Status variants ---------- */
+.status-pill { gap: 6px; }
+.status-pill .status-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+.status-AVAILABLE { border-color: rgba(34,197,94,0.4); color: #4ade80; background: rgba(34,197,94,0.1); }
+.status-AVAILABLE .status-dot { background: #4ade80; box-shadow: 0 0 6px #4ade80; }
+.status-IN_MATCH { border-color: rgba(234,179,8,0.4); color: #facc15; background: rgba(234,179,8,0.1); }
+.status-IN_MATCH .status-dot { background: #facc15; box-shadow: 0 0 6px #facc15; }
+.status-BUSY { border-color: rgba(239,68,68,0.4); color: #f87171; background: rgba(239,68,68,0.1); }
+.status-BUSY .status-dot { background: #f87171; box-shadow: 0 0 6px #f87171; }
+.status-OFFLINE { border-color: rgba(148,163,184,0.35); color: #94a3b8; background: rgba(148,163,184,0.08); }
+.status-OFFLINE .status-dot { background: #94a3b8; }
+.status-LOOKING_FOR_TEAM { border-color: rgba(59,130,246,0.4); color: #60a5fa; background: rgba(59,130,246,0.1); }
+.status-LOOKING_FOR_TEAM .status-dot { background: #60a5fa; box-shadow: 0 0 6px #60a5fa; }
+.status-SUBSTITUTE { border-color: rgba(217,70,239,0.4); color: #e879f9; background: rgba(217,70,239,0.1); }
+.status-SUBSTITUTE .status-dot { background: #e879f9; box-shadow: 0 0 6px #e879f9; }
+
+/* ---------- Public profile page ---------- */
+.profile-header {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  padding: 48px 0;
+  flex-wrap: wrap;
+}
+.profile-avatar {
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  border: 2px solid var(--purple-bright);
+  box-shadow: 0 0 24px rgba(139,92,246,0.35);
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--panel-2);
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  color: var(--purple-bright);
+  flex-shrink: 0;
+}
+.profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.profile-meta h1 { font-size: 2.1rem; margin-bottom: 6px; }
+.profile-meta .handle { font-family: var(--font-mono); color: var(--muted); margin-bottom: 12px; }
+.profile-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 20px 0 40px;
+}
+.profile-stat-grid .hud-card { padding: 18px; text-align: center; }
+.profile-stat-grid .num { font-family: var(--font-display); font-size: 1.6rem; color: var(--purple-bright); }
+.profile-stat-grid .label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted); text-transform: uppercase; margin-top: 4px; }
+.profile-bio { color: var(--muted); max-width: 620px; margin-bottom: 40px; }
+.profile-detail-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 32px; margin-bottom: 40px; }
+.profile-detail-list dt { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; color: var(--muted); letter-spacing: 0.06em; }
+.profile-detail-list dd { font-size: 0.98rem; margin-top: 3px; }
+.copy-uid-btn { cursor: pointer; background: none; border: none; color: var(--purple-bright); font-family: var(--font-mono); font-size: 0.78rem; margin-left: 8px; }
+
 .empty-state {
   text-align: center;
   padding: 60px 20px;
@@ -429,6 +484,48 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   border: 1px solid var(--line);
   clip-path: var(--clip-lg);
   padding: 44px;
+}
+
+.auth-card.wide { max-width: 640px; }
+
+.form-section-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--purple-bright);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 8px;
+  margin: 32px 0 18px;
+}
+.form-section-label:first-of-type { margin-top: 0; }
+
+.avatar-picker {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.avatar-preview {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--purple-bright);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.avatar-preview img { width: 100%; height: 100%; object-fit: cover; }
+.char-count {
+  text-align: right;
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 4px;
 }
 
 .auth-card h1 {
