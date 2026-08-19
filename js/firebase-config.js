@@ -11,12 +11,13 @@
 // ============================================================
 
 const firebaseConfig = {
-  apiKey: "PASTE_YOUR_API_KEY_HERE",
-  authDomain: "PASTE_YOUR_PROJECT.firebaseapp.com",
-  projectId: "PASTE_YOUR_PROJECT_ID",
-  storageBucket: "PASTE_YOUR_PROJECT.appspot.com",
-  messagingSenderId: "PASTE_YOUR_SENDER_ID",
-  appId: "PASTE_YOUR_APP_ID"
+  apiKey: "AIzaSyDKZVdBRokLn7t6aB5-onHEeXqmnQuZ1qs",
+  authDomain: "darkness-esports.firebaseapp.com",
+  projectId: "darkness-esports",
+  storageBucket: "darkness-esports.firebasestorage.app",
+  messagingSenderId: "634922945207",
+  appId: "1:634922945207:web:b69460d508bd13b9c59b32",
+  measurementId: "G-WN9WKJFRTH"
 };
 
 // Initialize Firebase (uses the compat SDK loaded via <script> tags in each HTML page)
