@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DARKNESS ESPORTS</title>
+<meta name="description" content="Official home of DARKNESS ESPORTS — Free Fire competitive roster, tournaments, and recruitment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="brand"><span class="brand-mark"></span>DARKNESS<span>&nbsp;ESPORTS</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#lineup">Lineup</a></li>
+      <li><a href="index.html#tournaments">Tournaments</a></li>
+      <li><a href="index.html#recruitment">Recruitment</a></li>
+      <li><a href="index.html#results">Results</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="login.html" class="btn btn-ghost btn-sm">Login</a>
+      <a href="register.html" class="btn btn-primary btn-sm">Join The Darkness</a>
+    </div>
+    <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-backdrop"></div>
+  <div class="container">
+    <div class="hero-eyebrow"><span class="dot"></span>Roster locked in &middot; Season active</div>
+    <h1>Precision.<br>Aggression.<br><span class="accent">DARKNESS.</span></h1>
+    <p>A competitive Free Fire organization built on discipline and reflex. Follow the roster, track the results, or step up and try out.</p>
+    <div class="hero-actions">
+      <a href="register.html" class="btn btn-primary">Join The Darkness</a>
+      <a href="index.html#tournaments" class="btn btn-ghost">View Tournaments</a>
+      <a href="index.html#lineup" class="btn btn-ghost">Current Lineup</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">—</div><div class="label">Matches Played</div></div>
+      <div class="hero-stat"><div class="num">—</div><div class="label">Tournament Wins</div></div>
+      <div class="hero-stat"><div class="num">—</div><div class="label">Active Roster</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="lineup">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">Main Squad</div>
+        <h2>Current Lineup</h2>
+      </div>
+      <a href="#" class="btn btn-ghost btn-sm">Full Roster &rarr;</a>
+    </div>
+    <div class="empty-state hud-card">
+      <div class="hud-corner"></div>
+      <h3>Roster data coming online</h3>
+      <p>Player profiles and the live lineup connect to Firestore in the next build phase.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="tournaments">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">Compete</div>
+        <h2>Upcoming Tournaments</h2>
+        <p>Registration-open brackets and scrim slots, tracked in real time.</p>
+      </div>
+    </div>
+    <div class="empty-state hud-card">
+      <div class="hud-corner"></div>
+      <h3>No tournaments loaded yet</h3>
+      <p>The tournament system connects in Phase 4 of the build.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="recruitment">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">Openings</div>
+        <h2>Join The Darkness</h2>
+        <p>We're always scouting for disciplined players who show up ready.</p>
+      </div>
+      <a href="register.html" class="btn btn-primary btn-sm">Apply Now</a>
+    </div>
+    <div class="grid grid-4">
+      <div class="hud-card"><div class="hud-corner"></div><h4 style="font-size:1rem;margin-bottom:6px;">Sniper</h4><span class="status-pill">Open</span></div>
+      <div class="hud-card"><div class="hud-corner"></div><h4 style="font-size:1rem;margin-bottom:6px;">Primary Rusher</h4><span class="status-pill">Open</span></div>
+      <div class="hud-card"><div class="hud-corner"></div><h4 style="font-size:1rem;margin-bottom:6px;">Support</h4><span class="status-pill">Open</span></div>
+      <div class="hud-card"><div class="hud-corner"></div><h4 style="font-size:1rem;margin-bottom:6px;">Substitute</h4><span class="status-pill">Open</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="results" style="border-bottom:none;">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">Track Record</div>
+        <h2>Recent Results</h2>
+      </div>
+    </div>
+    <div class="empty-state hud-card">
+      <div class="hud-corner"></div>
+      <h3>No matches logged yet</h3>
+      <p>Match results populate once the tournament system is live.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <a href="index.html" class="brand"><span class="brand-mark"></span>DARKNESS<span>&nbsp;ESPORTS</span></a>
+      <div class="footer-social">
+        <a href="#">Instagram</a>
+        <a href="#">Discord</a>
+        <a href="#">YouTube</a>
+        <a href="#">X</a>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 DARKNESS ESPORTS. All rights reserved.</div>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

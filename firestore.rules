@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // users/{uid} — created at registration, one doc per account.
+    // Anyone signed in can read profiles (public esports profiles);
+    // only the owner can create/edit their own document.
+    match /users/{userId} {
+      allow read: if true;
+      allow create: if request.auth != null && request.auth.uid == userId;
+      allow update: if request.auth != null && request.auth.uid == userId;
+      allow delete: if false; // deletions go through admin tooling in a later phase
+    }
+
+    // Everything else is closed until its collection's rules are added
+    // in later phases (teams, tournaments, registrations, etc).
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

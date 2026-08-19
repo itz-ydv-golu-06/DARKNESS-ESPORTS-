@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account — DARKNESS ESPORTS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container navbar-inner">
+    <a href="index.html" class="brand"><span class="brand-mark"></span>DARKNESS<span>&nbsp;ESPORTS</span></a>
+    <ul class="nav-links"></ul>
+    <div class="nav-actions"></div>
+    <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="auth-wrap">
+  <div class="auth-card">
+    <h1>Create Account</h1>
+    <p class="sub">Step one of joining DARKNESS ESPORTS. Full player profile comes next.</p>
+
+    <div class="form-alert" id="registerAlert"></div>
+
+    <form id="registerForm" novalidate>
+      <div class="field" id="field-username">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="shadowx" autocomplete="username" required>
+        <div class="field-error"></div>
+      </div>
+
+      <div class="field" id="field-displayName">
+        <label for="displayName">Display Name</label>
+        <input type="text" id="displayName" name="displayName" placeholder="ShadowX" required>
+        <div class="field-error"></div>
+      </div>
+
+      <div class="field" id="field-email">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+        <div class="field-error"></div>
+      </div>
+
+      <div class="field-row">
+        <div class="field" id="field-password">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" autocomplete="new-password" required>
+          <div class="field-error"></div>
+        </div>
+        <div class="field" id="field-confirm">
+          <label for="confirm">Confirm Password</label>
+          <input type="password" id="confirm" name="confirm" autocomplete="new-password" required>
+          <div class="field-error"></div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+    </form>
+
+    <div class="auth-foot">Already have an account? <a href="login.html">Login</a></div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>
